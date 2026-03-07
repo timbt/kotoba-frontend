@@ -1,5 +1,7 @@
+import Kanji from "./components/Kanji";
+
 function App() {
-  return <div>言葉</div>;
+  return <Kanji />;
 }
 
 export default App;

@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
+
 import { client } from "../api/client";
-import Kanji from "./Kanji";
 import { wrapper } from "../test/utils";
+import Kanji from "./Kanji";
 
 vi.mock("../api/client", () => ({
   client: { request: vi.fn() },

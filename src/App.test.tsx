@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
 
 import { client } from "./api/client";
 import App from "./App";
@@ -18,7 +19,12 @@ describe("App", () => {
         meanings: ["cat"],
       },
     });
-    render(<App />, { wrapper });
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+      { wrapper },
+    );
     expect(await screen.findByText("猫")).toBeInTheDocument();
   });
 });

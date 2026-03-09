@@ -3,11 +3,15 @@ import { useQuery } from "@tanstack/react-query";
 import { client } from "../api/client";
 import { GET_KANJI, type KanjiEntry } from "../api/queries";
 
-function Kanji() {
+interface Props {
+  literal: string;
+}
+
+function Kanji({ literal }: Props) {
   const { data, isPending, isError } = useQuery({
-    queryKey: ["kanji", "猫"],
+    queryKey: ["kanji", literal],
     queryFn: () =>
-      client.request<{ kanji: KanjiEntry }>(GET_KANJI, { literal: "猫" }),
+      client.request<{ kanji: KanjiEntry }>(GET_KANJI, { literal: literal }),
   });
 
   if (isPending) return <p>Loading...</p>;

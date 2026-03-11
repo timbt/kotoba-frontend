@@ -18,6 +18,14 @@ function Kanji({ literal }: Props) {
   if (isError) return <p>Error loading kanji.</p>;
 
   const kanji = data.kanji;
+
+  if (kanji === null)
+    return (
+      <div>
+        <p>No kanji found!</p>
+      </div>
+    );
+
   return (
     <div>
       <h2>{kanji.literal}</h2>

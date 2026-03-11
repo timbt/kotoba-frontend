@@ -33,6 +33,12 @@ describe("Kanji", () => {
     expect(screen.getByText(/cat/)).toBeInTheDocument();
   });
 
+  it("renders error state when request returns null", async () => {
+    vi.mocked(client.request).mockResolvedValue({ kanji: null });
+    render(<Kanji literal="foo" />, { wrapper });
+    expect(await screen.findByText(/no kanji found/i)).toBeInTheDocument();
+  });
+
   it("renders error state when request fails", async () => {
     vi.mocked(client.request).mockRejectedValue(new Error("Network error"));
     render(<Kanji literal="猫" />, { wrapper });

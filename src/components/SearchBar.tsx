@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Search } from "react-bootstrap-icons";
 import { useNavigate } from "react-router";
 
 function SearchBar() {
@@ -23,7 +24,9 @@ function SearchBar() {
           onChange={(e) => setValue(e.target.value)}
         />
       </Form.Group>
-      <Button type="submit">Search</Button>
+      <Button type="submit" aria-label="Search">
+        <Search />
+      </Button>
     </Form>
   );
 }

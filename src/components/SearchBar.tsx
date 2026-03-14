@@ -19,7 +19,7 @@ function SearchBar() {
       <InputGroup>
         <Form.Control
           as="input"
-          type="search"
+          type="text"
           placeholder="Lookup a kanji by its literal (eg. '猫')"
           value={value}
           onChange={(e) => setValue(e.target.value)}

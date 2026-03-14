@@ -12,7 +12,7 @@ describe("App", () => {
       </MemoryRouter>,
       { wrapper },
     );
-    expect(screen.getByRole("searchbox")).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Search" })).toBeInTheDocument();
   });
 });

@@ -1,4 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import Badge from "react-bootstrap/Badge";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 import { client } from "../api/client";
 import { GET_KANJI, type KanjiEntry } from "../api/queries";
@@ -27,12 +31,30 @@ function Kanji({ literal }: Props) {
     );
 
   return (
-    <div>
-      <h2>{kanji.literal}</h2>
-      <p>On readings: {kanji.readings_on.join(", ")}</p>
-      <p>Kun readings: {kanji.readings_kun.join(", ")}</p>
-      <p>Meanings: {kanji.meanings.join(", ")}</p>
-    </div>
+    <Container>
+      <Row>
+        <Col md="auto">
+          <Badge className="fs-1">{kanji.literal}</Badge>
+        </Col>
+        <Col>
+          <Row>
+            <span>
+              <b>On'yomi:</b> {kanji.readings_on.join(", ")}
+            </span>
+          </Row>
+          <Row>
+            <span>
+              <b>Kun'yomi:</b> {kanji.readings_kun.join(", ")}
+            </span>
+          </Row>
+          <Row>
+            <span>
+              <b>Meanings:</b> {kanji.meanings.join(", ")}
+            </span>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import hepburn from "hepburn";
 import Badge from "react-bootstrap/Badge";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -30,6 +31,10 @@ function Kanji({ literal }: Props) {
       </div>
     );
 
+  // Small utility function to print hepburn-formatted romaji alongside each kana reading
+  const formatWithHepburn = (reading: string) =>
+    `${reading} [${hepburn.fromKana(reading).toLowerCase()}]`;
+
   return (
     <Container>
       <Row>
@@ -39,12 +44,14 @@ function Kanji({ literal }: Props) {
         <Col>
           <Row>
             <span>
-              <b>On'yomi:</b> {kanji.readings_on.join(", ")}
+              <b>On'yomi:</b>{" "}
+              {kanji.readings_on.map(formatWithHepburn).join(", ")}
             </span>
           </Row>
           <Row>
             <span>
-              <b>Kun'yomi:</b> {kanji.readings_kun.join(", ")}
+              <b>Kun'yomi:</b>{" "}
+              {kanji.readings_kun.map(formatWithHepburn).join(", ")}
             </span>
           </Row>
           <Row>

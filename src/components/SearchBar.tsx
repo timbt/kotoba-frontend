@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { Search } from "react-bootstrap-icons";
 import { useNavigate } from "react-router";
 
 function SearchBar() {
@@ -14,16 +16,18 @@ function SearchBar() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group>
+      <InputGroup>
         <Form.Control
           as="input"
-          type="search"
+          type="text"
           placeholder="Lookup a kanji by its literal (eg. '猫')"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-      </Form.Group>
-      <Button type="submit">Search</Button>
+        <Button type="submit" aria-label="Search">
+          <Search />
+        </Button>
+      </InputGroup>
     </Form>
   );
 }

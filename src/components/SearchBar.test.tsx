@@ -19,14 +19,14 @@ describe("SearchBar", () => {
 
   it("renders the search input and button", () => {
     render(<SearchBar />, { wrapper: MemoryRouter });
-    expect(screen.getByRole("searchbox")).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Search" })).toBeInTheDocument();
   });
 
   it("navigates to the kanji page on submit", async () => {
     const user = userEvent.setup();
     render(<SearchBar />, { wrapper: MemoryRouter });
-    await user.type(screen.getByRole("searchbox"), "猫");
+    await user.type(screen.getByRole("textbox"), "猫");
     await user.click(screen.getByRole("button", { name: "Search" }));
     expect(mockNavigate).toHaveBeenCalledWith("/kanji/猫");
   });
